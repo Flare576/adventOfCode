@@ -42,5 +42,15 @@ with open("5-1.input") as vents:
             row = floor[start[1]]
             for i in range(near, far+1):
                 row[i] = row[i] + 1
+        else:
+            check_colums(max(start[0],end[0]))
+            check_floor(max(start[1],end[1]))
+            dx = 1 if start[0] < end[0] else -1
+            dy = 1 if start[1] < end[1] else -1
+            x,y = start
+            while x != end[0] + dx:
+                floor[y][x] = floor[y][x] + 1
+                x += dx
+                y += dy
 
 print(f"There are {count_unsafe()} unsafe spots.")
